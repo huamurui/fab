@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>floating action button</title>
+    <script src="fab.js" defer></script>
+</head>
+<body>
+    <hm-fab>
+        <div slot="fab-icon">o</div>
+        <div slot="fab-subs">
+            <div>1</div>
+            <div id="hm2">2</div>
+            <div>3</div>
+            <div>4</div>
+            <div>5</div>
+        </div>
+    </hm-fab>
+    <script>
+        const fab = document.querySelector('hm-fab');
+        fab.addEventListener('fab-click', (e) => {
+            console.log(e.detail,'fab clicked');
+            // ... a bit ugly
+            if(e.detail.item.id === "hm2"){
+                console.log('hm2 clicked');
+            }
+        });
+    </script>
+
+</body>
+</html>
