@@ -68,6 +68,21 @@ class FAB extends HTMLElement {
             transition: none;
         }
         
+        .progress-ring {
+            position: absolute;
+            height: 62px;
+            width: 62px;
+            transform: rotate(-90deg);
+        }
+        
+        .progress-ring__circle {
+            fill: none;
+            stroke: var(--progress-color, #000000ff);
+            stroke-width: 2;
+            stroke-linecap: round;
+            // transition: stroke-dashoffset 0.5s ease-in-out;
+        }
+        
         </style>
         <div class="floating-action-button main">
             <div class="floating-action-button icon">+</div>
@@ -77,6 +92,9 @@ class FAB extends HTMLElement {
                 <div class="floating-action-button sub">3</div>
             </div>
             <div class="floating-action-button pre-sticky"></div>
+            <svg class="progress-ring">
+                <circle class="progress-ring__circle" cx="31" cy="31" r="30" stroke-dasharray="188.49" stroke-dashoffset="188.49"></circle>
+            </svg>
         </div>
         `
         this.init()
@@ -121,7 +139,23 @@ class FAB extends HTMLElement {
             ex: 0,
             ey: 0
         }
+
+        this.progressCircle = this.shadowRoot.querySelector('.progress-ring__circle');
+        // 计算圆周长 (2πr)
+        const radius = this.progressCircle.r.baseVal.value;
+        this.circumference = 2 * Math.PI * radius;
+
+        window.addEventListener("scroll", () => {
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+            let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+            let clientHeight = document.documentElement.clientHeight || document.body.clientHeight
+            let scrollPercent = (scrollTop / (scrollHeight - clientHeight)) * 100
+
+            const offset = this.circumference - (scrollPercent / 100) * this.circumference;
+            this.progressCircle.style.strokeDashoffset = offset;
+        })
     }
+
     toggleState(toState) {
         this.preSticky.style.opacity = 0
         for(let i = 0; i < this.subs.length; i++) {
