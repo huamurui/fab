@@ -171,8 +171,8 @@ class FAB extends HTMLElement {
             for (let i = 0; i < this.subs.length; i++) {
                 let unit = (2 * Math.PI) / this.subs.length
                 let angle = unit * i
-                let x = Math.cos(angle) * 40
-                let y = Math.sin(angle) * 40
+                let x = Math.cos(angle) * 45
+                let y = Math.sin(angle) * 45
                 this.subs[i].style.top = this.main.offsetTop + this.main.clientHeight / 2 - this.subs[i].clientHeight / 2 + "px"
                 this.subs[i].style.left = this.main.offsetLeft + this.main.clientWidth / 2 - this.subs[i].clientWidth / 2 + "px"
 
