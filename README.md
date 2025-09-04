@@ -2,9 +2,8 @@
 
 
 I'm not sure how to call it... but it works as below:  
-![demo](./demo.gif)
 
-here is an online demo:  [floating-action-button](https://huamurui.github.io/html-s/#/floating-action-button) 
+[https://huamurui.github.io/fab]
 
 ---
 

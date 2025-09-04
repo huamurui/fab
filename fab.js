@@ -195,7 +195,7 @@ class FAB extends HTMLElement {
                 this.main.style = `left: ${this.main.offsetLeft  + "px"};top: ${window.innerHeight - this.main.clientHeight + "px"};`
                 break
                 case "left":
-                this.main.style = `left: ${0 + "px"};top: ${main.offsetTop  + "px"};`
+                this.main.style = `left: ${0 + "px"};top: ${this.main.offsetTop  + "px"};`
                 break
             }
             for (let i = 0; i < this.subs.length; i++) {
